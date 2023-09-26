@@ -1,5 +1,6 @@
 import {currentProfile} from '@/lib/current-profile'
 import {db} from '@/lib/db'
+import {ChannelType} from '@prisma/client'
 import {redirect} from 'next/navigation'
 
 interface ServerSidebarProps {
@@ -32,7 +33,21 @@ export const ServerSidebar = async ({serverId}: ServerSidebarProps) => {
     },
   })
 
-  // const textChannels = server?.channels.filter((channel) => channel.type)
+  const textChannels = server?.channels.filter(
+    (channel) => channel.type === ChannelType.TEXT
+  )
+  const audioChannels = server?.channels.filter(
+    (channel) => channel.type === ChannelType.AUDIO
+  )
+  const videoChannels = server?.channels.filter(
+    (channel) => channel.type === ChannelType.VIDEO
+  )
+
+  const members = server?.members.filter(
+    (member) => member.profileId !== profile.id
+  )
+
+  if (!server) return redirect('/')
 
   return <div>Server Sidebar Component</div>
 }
