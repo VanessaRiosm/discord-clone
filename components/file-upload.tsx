@@ -25,13 +25,17 @@ export const FileUpload = ({onChange, value, endpoint}: FileUploadProps) => {
 
         <button
           onClick={() => onChange('')}
-          className='bg-rose-500 text-white p-1 rounded-full absolute top-50 right-48 shadow-sm'
+          className='bg-rose-500 text-white p-1 rounded-full absolute top-50 right-[210px] shadow-sm'
           type='button'
         >
           <X className='h-5 w-5' />
         </button>
       </div>
     )
+  }
+
+  if (value && fileType === 'pdf') {
+    return <div className='relative'></div>
   }
 
   return (
