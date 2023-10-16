@@ -77,8 +77,16 @@ export const ChatItem = ({
 
   const isLoading = form.formState.isSubmitting
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      const url = qs.stringifyUrl({
+        url: `${socketUrl}/${id}`,
+        query: socketQuery,
+      })
+
+      await axios.patch(url, values)
+      form.reset()
+      setIsEditing(false)
     } catch (error) {
       console.log(error)
     }
@@ -158,7 +166,9 @@ export const ChatItem = ({
             >
               {content}
               {isUpdated && !deleted && (
-                <span className='text-[10px] mx-2 text-zinc-500 dark:text-zinc-400'></span>
+                <span className='text-[10px] mx-2 text-zinc-500 dark:text-zinc-400'>
+                  (edited)
+                </span>
               )}
             </p>
           )}
