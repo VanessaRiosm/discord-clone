@@ -42,6 +42,7 @@ export const useChatQuery = ({
       getNextPageParam: (lastPage) => lastPage?.nextCursor,
       // refresh every 1 second to new messages (depending on websocket)
       refetchInterval: isConnected ? false : 1000,
+      // refetchInterval: 1000,
     })
 
   return {
