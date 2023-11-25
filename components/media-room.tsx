@@ -51,7 +51,6 @@ export const MediaRoom = ({chatId, video, audio}: MediaRoomProps) => {
       audio={audio}
     >
       <VideoConference />
-      hols sod
     </LiveKitRoom>
   )
 }
