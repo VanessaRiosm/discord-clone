@@ -119,7 +119,7 @@ export const ChatItem = ({
   const isImage = !isPDF && fileUrl
 
   return (
-    <div className='relative group flex items-center hover:bg-black/5 p-4 transition w-full'>
+    <div className='relative group flex items-center hover:bg-black/5 p-4 transition w-full '>
       <div className='group flex gap-x-2 items-start w-full'>
         <div
           onClick={onMemberClick}
@@ -149,7 +149,7 @@ export const ChatItem = ({
               href={fileUrl}
               target='_blank'
               rel='noopener noreferrer'
-              className='relative aspect-square rounded-md mt-2 overflow-hidden border flex items-center bg-secondary h-48 w-48'
+              className='relative aspect-square rounded-md mt-2 overflow-hidden border flex items-center bg-secondary h-60 w-[380px]'
             >
               <Image
                 src={fileUrl}
